@@ -1,7 +1,7 @@
 <!-- connect file -->
 <?php
-include('admin_area/connect.php');
-include('functions/common_function.php');
+include('./admin_area/connect.php');
+include('./functions/common_function.php');
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +37,7 @@ include('functions/common_function.php');
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Blogs</a>
@@ -57,16 +57,10 @@ include('functions/common_function.php');
       </div>
     </nav>
 
-    <!--  -->
-    <?php 
-    cart();
-    ?>
-
     <!-- second child -->
     <div class="bg-secondary text-light text-center">
       <h4>store</h4>
       <p>Recycle to Reimagine: Turning Trash into Treasure!</p>
-      <button href="" type="button" class="btn btn-primary"> <a href="insert_product.php" class="link-danger">Login</a></button>
     </div>
 
     <!-- third child -->
@@ -76,10 +70,9 @@ include('functions/common_function.php');
         <div class="row">
           <!-- fetching products -->
           <?php
-          getproducts();
-          get_unique_categories();
-          // $ip = getIPAddress();
-          // echo 'User Real IP Address - ' . $ip;
+          search_product();
+         getproducts();
+         get_unique_categories() ;
           ?>
 
 
@@ -127,11 +120,6 @@ include('functions/common_function.php');
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
-    <style>
-      body{
-        overflow-x:hidden ;
-      }
-    </style>
 </body>
 
 </html>

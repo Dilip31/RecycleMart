@@ -50,7 +50,7 @@
         <div class="row">
             <div class=" d-flex col-md-12 bg-secondary p-1 align-items-center">
                 <div class="px-2">
-                    <a href="#"><img src="user.png" alt="" class="admin_image"></a>
+                    <a href="#"><img src="r.png" alt="" class="admin_image"></a>
                     <p class="text">riya sharma</p>
                 </div>
                 <div class="button ">
@@ -78,7 +78,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <style>
         body{
-            overflow-x:hidden ;
+            overflow-x: hidden;
         }
     </style>
 </body>

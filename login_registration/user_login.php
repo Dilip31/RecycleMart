@@ -78,6 +78,7 @@ if (isset($_POST["user_login"])) {
     // Changed from $row_data['$user_password'] to $row_data['user_password']
     if ($user_password=== $row_data['user_password']) {
       echo "<script>alert('Login successful')</script>";
+      echo "<script>";
     } else {
       echo "<script>alert('Invalid Credentials: Incorrect Password')</script>";
     }

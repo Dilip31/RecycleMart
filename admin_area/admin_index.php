@@ -49,15 +49,12 @@
         <!-- third child -->
         <div class="row">
             <div class=" d-flex col-md-12 bg-secondary p-1 align-items-center">
-                <div class="px-2">
-                    <a href="#"><img src="r.png" alt="" class="admin_image"></a>
-                    <p class="text">riya sharma</p>
-                </div>
+                
                 <div class="button ">
-                    <button><a href="" class="nav-link text-light bg-info my-1">Show Categories</a></button>
-                    <button><a href="index.php?insert_category" class="nav-link text-light bg-info my-1">Insert Categories</a></button>
-                    <button><a href="" class="nav-link text-light bg-info my-1">Insert products</a></button>
-                    <button><a href="" class="nav-link text-light bg-info my-1">UserList</a></button>
+                    <button><a href="admin_index.php?view_categories" class="nav-link text-light bg-info my-1">Show Categories</a></button>
+                    <button><a href="admin_index.php?insert_category" class="nav-link text-light bg-info my-1">Insert Categories</a></button>
+                    <button><a href="admin_index.php?view_products" class="nav-link text-light bg-info my-1">view products</a></button>
+                    <button><a href="admin_index.php?user_list" class="nav-link text-light bg-info my-1">UserList</a></button>
                 </div>
             </div>
         </div>
@@ -67,6 +64,24 @@
             <?php
             if (isset($_GET['insert_category'])) {
                 include('insert_categories.php');
+            }
+            if (isset($_GET['view_categories'])) {
+                include('view_categories.php');
+            }
+            if (isset($_GET['view_products'])) {
+                include('view_products.php');
+            } 
+            if (isset($_GET['user_list'])) {
+                include('user_list.php');
+            }
+            if (isset($_GET['delete_product'])) {
+                include('delete_product.php');
+            }
+            if (isset($_GET['delete_category'])) {
+                include('delete_category.php');
+            }
+            if (isset($_GET['delete_user'])) {
+                include('delete_user.php');
             }
             ?>
         </div>
@@ -78,7 +93,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <style>
         body{
-            overflow-x: hidden;
+            overflow-x:hidden ;
         }
     </style>
 </body>

@@ -48,6 +48,7 @@ include('functions/common_function.php');
           <li class="nav-item">
             <a class="nav-link" href="#">Request</a>
           </li>
+         
         </ul>
         <form class="form-inline my-2 my-lg-0" action="search_products.php" method="get">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
@@ -67,6 +68,10 @@ include('functions/common_function.php');
       <h4>store</h4>
       <p>Recycle to Reimagine: Turning Trash into Treasure!</p>
       <button href="" type="button" class="btn btn-primary"> <a href="insert_product.php" class="link-danger">Login</a></button>
+      <P><?Php  session_start();
+       $username = $_SESSION['username'];
+        echo $username;
+      ?></P>
     </div>
 
     <!-- third child -->

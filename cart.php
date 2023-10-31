@@ -57,6 +57,7 @@ include('functions/common_function.php');
 
         <div class="container">
             <div class="row">
+                <form action="" method="post">
                 <table class="table table-bordere">
                     <thead>
                         <tr>
@@ -94,10 +95,10 @@ include('functions/common_function.php');
                             <td><img src="./admin_area/product_images/<?php echo $product_image1?>" alt=""class="cart_img"></td>
                             <td><?php echo $price_table?></td>
 
-                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox" name="removeitem[]" value="<?php echo $product_id ?>"></td>
+
                             <td>
-                                <button class="bg-info px-3 py-2 border-0 mx-3">remove</button>
-                                
+                                <input type="submit" value="Remove cart" class="bg-info px-3 py-2 border-0 mx-3" name="remove_cart">
                             </td>
                         </tr>
                         <?php }}?>
@@ -108,6 +109,24 @@ include('functions/common_function.php');
                 </div>
             </div>
         </div>
+                            </form>
+        <!-- function to remove item  -->
+        <?php 
+        function remove_cart_item(){
+            global $con;
+        if(isset($_POST['remove_cart'])){
+            foreach($_POST['removeitem'] as $remove_id){
+                echo $remove_id;
+                $delete_query="Delete from `cart_details` where product_id=$remove_id";
+                $run_delete=mysqli_query($con,$delete_query);
+                if($run_delete){
+                    echo "<script>window.open('cart.php','_self')</script>";
+                }
+            }
+        }
+    }
+    echo $remove_item=remove_cart_item();
+        ?>
 
     </div>
     <!-- last child -->

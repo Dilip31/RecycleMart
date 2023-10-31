@@ -50,6 +50,11 @@ include('../functions/common_function.php');
           <div>
             <input type="submit" class="bg-info py-2 px-3 border-0" name="user_login" value="Login">
             <p class="small fw-bold mt-2 pt-1">Dom't you have an account? <a href="user_registration.php" class="link-danger">Register</a></p>
+            <P><?Php  session_start();
+       $username = $_SESSION['username'];
+        echo $username;
+      ?></P>
+
           </div>
 
         </form>
@@ -65,12 +70,14 @@ include('../functions/common_function.php');
 <?php
 if (isset($_POST["user_login"])) {
   // Ensure your database connection is properly established and the $con variable is defined
-
+  session_start();
   $user_username = $_POST['username'];
   $user_password = $_POST['password'];
-
+  $_SESSION['username'] = $user_username;
   $select_query = "SELECT * FROM `user_table` WHERE username='$user_username'";
   $result = mysqli_query($con, $select_query);
+
+  
 
   if ($result && mysqli_num_rows($result) > 0) {
     $row_data = mysqli_fetch_assoc($result);

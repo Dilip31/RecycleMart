@@ -19,18 +19,27 @@ include('../functions/common_function.php');
     body {
       overflow: hidden;
     }
+    
+    .main{
+
+background-color: cornflowerblue;
+}
+        .button{
+          background-color:#45ba5b;
+        }
   </style>
 
 
 </head>
 
 <body>
-  <div class="container-fluid m-3">
-    <div class="d-flex">
+<div class="container-sm  main mt-5 w-50  border-2  rounded-4 p-5  shadow-lg">
+   
+    <div class="d-flex flex-row justify-content-center">
       <h2 class="text-center mb-5">User login </h2>
-      <p class="small fw-bold mt-2 pt-1"> admin <a href="admin_login.php" class="link-danger">Login</a></p>
+      <!-- <p class="small fw-bold mt-2 pt-1"> admin <a href="admin_login.php" class="link-danger">Login</a></p> -->
     </div>
-    <div class="row d-flex justify-contet-center">
+    <div class="row d-flex justify-content-sm-evenly">
       <div class="col-lg-6 col-xl-5">
         <img src="admin_login.jpg" alt="Admin registration" class="img-fluid">
       </div>
@@ -38,7 +47,7 @@ include('../functions/common_function.php');
       <div class="col-lg-6 col-xl-4">
         <form action="" method="post">
           <div class="form-outline mb-4">
-            <label for="username" class="form-label">Username</label>
+            <label for="username" class="form-label"> <b>Username</label>
             <input type="text" id="username" name="username" placeholder="Enter your username" require class="form-control">
           </div>
 
@@ -48,13 +57,8 @@ include('../functions/common_function.php');
           </div>
 
           <div>
-            <input type="submit" class="bg-info py-2 px-3 border-0" name="user_login" value="Login">
+            <input type="submit" class="button py-2 border border-black ms-5 rounded-3 px-3 border-0" name="user_login" value="Login">
             <p class="small fw-bold mt-2 pt-1">Dom't you have an account? <a href="user_registration.php" class="link-danger">Register</a></p>
-            <!-- <P><?Php  session_start();
-       $username = $_SESSION['username'];
-        echo $username;
-      ?></P> -->
-
           </div>
 
         </form>
@@ -70,14 +74,12 @@ include('../functions/common_function.php');
 <?php
 if (isset($_POST["user_login"])) {
   // Ensure your database connection is properly established and the $con variable is defined
-  session_start();
+
   $user_username = $_POST['username'];
   $user_password = $_POST['password'];
-  $_SESSION['username'] = $user_username;
+
   $select_query = "SELECT * FROM `user_table` WHERE username='$user_username'";
   $result = mysqli_query($con, $select_query);
-
-  
 
   if ($result && mysqli_num_rows($result) > 0) {
     $row_data = mysqli_fetch_assoc($result);
@@ -85,8 +87,6 @@ if (isset($_POST["user_login"])) {
     // Changed from $row_data['$user_password'] to $row_data['user_password']
     if ($user_password=== $row_data['user_password']) {
       echo "<script>alert('Login successful')</script>";
-      echo "<script>window.open('../index.php','_self')</script>";
-
     } else {
       echo "<script>alert('Invalid Credentials: Incorrect Password')</script>";
     }

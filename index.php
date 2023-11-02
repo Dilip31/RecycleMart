@@ -71,7 +71,20 @@ include('functions/common_function.php');
       <P><?Php  session_start();
        $username = $_SESSION['username'];
         echo $username;
-      ?></P>
+        global $con;
+        $get_ip_add = getIPAddress();
+$select_user_image = "SELECT user_image FROM user_table WHERE user_ip='$get_ip_add'";
+$result_user_image = mysqli_query($con, $select_user_image);
+
+if ($row_user_image = mysqli_fetch_array($result_user_image)) {
+    $user_image = $row_user_image['user_image'];
+  
+      ?>
+
+       <tr>
+     <td><img src="../login_registration/user_images/<?php echo $user_image?>" alt="""></td>
+      </tr>
+    <?php } ?></P>
     </div>
 
     <!-- third child -->

@@ -12,24 +12,39 @@ include('../functions/common_function.php');
     <title>User Registration</title>
 
     <!-- bootstrap css link -->
+   
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+     
+        .main{
+
+background-color: cornflowerblue;
+
+        }
+        .button{
+          background-color:#45ba5b;
+          margin-left: 30%;
+        }
+     </style>
 </head>
 
 <body>
-    <div class="container-fluid m-3">
-    <div class="d-flex"> <h2 class="text-center mb-5">user registration </h2>
-        <p class="small fw-bold mt-2 pt-1"> admin  <a href="admin_login.php" class="link-danger">login</a></p></div>    <div class="row d-flex justify-contet-center">
-        <div class="col-lg-6 col-xl-5">
-        <div class="row d-flex justify-contet-center">
-        <div class="col-lg-6 col-xl-5">
-            <img src="admin_registration.jpg" alt="Admin registration" class="img-fluid">
-        </div>
-            <div class="col-lg-12 col-xl-6">
+<div class="container-sm  main mt-5 mb-5 w-50  border-3 border rounded-5 p-5 shadow shadow-lg">
+      
+    
+    <div class="d-flex flex-row justify-content-center"> <h2 class="text-center mb-5">user registration </h2>
+        <!-- <p class="small fw-bold mt-2 pt-1"> admin  <a href="admin_registration.php" class="link-danger">registration</a></p> -->
+    </div>   
+         <div class=" d-flex flex-column align-items-center position-relative">
+        <!-- <div class="col-lg-6 col-xl-5"> -->
+        <!-- <div class="row d-flex justify-contet-center"> -->
+    
+            
                 <form action="" method="post" enctype="multipart/form-data">
 
                     <!-- FOR USER NAME -->
-                    <div class="form-outline">
-                        <lable for="user_username" class="form-lable">Username</lable>
+                    <div class=" mb-2">
+                        <lable for="user_username" class="form-lable"> <b>Username</lable>
                         <input type="text" id="user_username" class="form-control" placeholder="Enter your username" autocomplete="off" required="required" name="user_username" />
                     </div><br>
 
@@ -68,16 +83,16 @@ include('../functions/common_function.php');
                         <input type="text" id="user_contact" class="form-control" placeholder="Enter your Contact" autocomplete="off" required="required" name="user_contact" />
                     </div><br>
 
-                    <div class="mt-4 pt-2">
-                        <input type="submit" value="Register" class="bg-info py-2 px-3 border-0" name="user_register" />
-                        <p class="small fw-bold mt-2 pt-1 mb-0"> Already have an account?
+                    <div class="mt-2 ">
+                        <input type="submit" value="Register" class="button py-2 px-3 border-1 rounded-3 " name="user_register" />
+                        <p class=" small fw-bold mt-2 pt-1 mb-0"> Already have an account?
                             <a href="user_login.php" class="text-danger"> Login</a>
                         </p>
                     </div>
                 </form>
-            </div>
+        
         </div>
-    </div>
+    
 
 
 
@@ -121,9 +136,7 @@ else{
             $sql_execute = mysqli_query($con, $insert_query);
 
             if($sql_execute){
-                echo "<script>alert('Data inserted successfully')</script>";
-                echo "<script>window.open('user_login.php','_self')</script>";
-    
+                echo "<script>alert('Data inserted successfully')</script>";    
             } else {
                 die(mysqli_error($con));
             }

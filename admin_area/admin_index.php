@@ -36,7 +36,10 @@
                 <nav class="navbar navbar-expand-lg navbar-light bg-info">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="" class="nav-link">welcome bhai</a>
+                            <a href="" class="nav-link">welcome <?Php  session_start();
+       $username = $_SESSION['admin_username'];
+        echo $username;
+      ?> </a>
                         </li>
                     </ul>
                 </nav>

@@ -4,26 +4,25 @@ include('admin_area/connect.php');
 
 if (isset($_POST['insert_product'])) {
     // Get form data
-    $product_title = $_POST['product_title'];
-    $product_description = $_POST['product_description'];
-    $product_category = $_POST['product_category'];
-    $product_price = $_POST['product_price'];
-    $product_status = 'true';
+    $Blog_title = $_POST['Blog_title'];
+    $Blog_description = $_POST['Blog_description'];
+    $Blog_content = $_POST['Blog_content'];
+
 
     // Accessing images (make sure to handle file uploads appropriately)
-    $product_image1 = $_FILES['product_image']['name'];
+    $Blog_image1 = $_FILES['Blog_image']['name'];
 
-    $temp_image1 = $_FILES['product_image']['tmp_name'];
+    $temp_image1 = $_FILES['Blog_image']['tmp_name'];
 
-    if ($product_title == '' or $product_description == '' or $product_price == '' or $product_category == '' or $product_image1 == '') {
+    if ($Blog_title == '' or $Blog_description == '' or $product_price == '' or $Blog_image1 == '') {
         echo "<script>alert('please fill all the availabel fields')</script>";
         exit();
     } else {
-        move_uploaded_file($temp_image1, "./admin_area/product_images/$product_image1");
+        move_uploaded_file($temp_image1, "./admin_area/Blog_images/$product_image1");
     }
 
     //insert query
-    $insert_products = "insert into `products` (product_title,product_description,category_id,product_image1,product_price,date,status) values ('$product_title','$product_description','$product_category','$product_image1','$product_price',NOW(),'$product_status')";
+    $insert_products = "insert into `blog` (Blog_title,Blog_description,Blog_id,Blog_image1,date) values ('$Blog_title','$Blog_description','$Blog_content','$Blog_image1',NOW())";
     $result_query = mysqli_query($con, $insert_products);
     if ($result_query) {
         echo "<script>alert('Successfully inserted products')</script>";
@@ -52,7 +51,7 @@ if (isset($_POST['insert_product'])) {
 
 <body class="bg-light">
     <div class="container mt-4">
-        <h1 class="text-center"> Insert Product</h1>
+        <h1 class="text-center"> Insert blog</h1>
         <!-- starting of form     -->
         <form action="" method="post" enctype="multipart/form-data">
 

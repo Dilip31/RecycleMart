@@ -51,7 +51,7 @@ background-color: cornflowerblue;
                     <!-- FOR EMAIL -->
                     <div class="form-email  ">
                         <lable for="user_email" class="form-lable">Email</lable>
-                        <input type="text" id="user_email" class="form-control" placeholder="Enter your Email" autocomplete="off" required="required" name="user_email" />
+                        <input type="text" id="user_email" class="form-control" placeholder="Enter your Email" autocomplete="off" required="required" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" name="user_email" />
                     </div><br>
 
                     <!-- FOR IMAGE  -->
@@ -63,7 +63,8 @@ background-color: cornflowerblue;
                     <!-- FOR PASSWORD  -->
                     <div class="form-password  ">
                         <lable for="user_password" class="form-lable">Password</lable>
-                        <input type="password" id="user_password" class="form-control" placeholder=" password" autocomplete="off" required="required" name="user_password" />
+                        <input type="password" id="user_password" class="form-control" placeholder=" password" autocomplete="off" required="required" name="user_password" 
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
                     </div><br>
 
                     <div class="form-password  ">
@@ -80,9 +81,8 @@ background-color: cornflowerblue;
                     <!-- FOR USER CONTACT -->
                     <div class="form-contact">
                         <lable for="user_contact" class="form-lable">Contact</lable>
-                        <input type="text" id="user_contact" class="form-control" placeholder="Enter your Contact" autocomplete="off" required="required" name="user_contact" />
+                        <input type="text" id="user_contact" class="form-control" pattern="[789][0-9]{9}" placeholder="Enter your Contact" autocomplete="off" required="required" name="user_contact" />
                     </div><br>
-
                     <div class="mt-2 ">
                         <input type="submit" value="Register" class="button py-2 px-3 border-1 rounded-3 " name="user_register" />
                         <p class=" small fw-bold mt-2 pt-1 mb-0"> Already have an account?
@@ -136,7 +136,10 @@ else{
             $sql_execute = mysqli_query($con, $insert_query);
 
             if($sql_execute){
-                echo "<script>alert('Data inserted successfully')</script>";    
+                echo "<script>alert('Data inserted successfully')</script>";  
+                echo "<script>window.open('user_login.php','_self')</script>";
+
+
             } else {
                 die(mysqli_error($con));
             }

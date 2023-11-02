@@ -1,3 +1,8 @@
+<?php 
+include('../admin_area/connect.php');
+include('../functions/common_function.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +38,7 @@ background-color: cornflowerblue;
         <h2 class="text-center  mb-5">Admin login
 
         </h2>
-        <!-- <p class="small fw-bold mt-2 pt-1">user <a href="user_login.php" class="link-danger">Login</a></p> -->
+        <p class="small fw-bold mt-2 pt-1">user <a href="user_login.php" class="link-danger">Login</a></p>
       </div>     
       <div class="row d-flex justify-content-sm-evenly">
         <div class="col-lg-6 col-xl-5 ">
@@ -54,8 +59,9 @@ background-color: cornflowerblue;
 
           <div>
             <input type="submit" class=" button py-2 px-3 border-1 ms-4 rounded-3" name="admin_login" value="Login">
-            <p class="small fw-bold mt-2 pt-1">Dom't you have an account? <a href="admin_registration.php" class="link-danger">Register</a></p>
           </div>
+
+
 
           </form>
         </div>
@@ -65,3 +71,35 @@ background-color: cornflowerblue;
     
 </body>
 </html>
+
+
+
+<?php
+if (isset($_POST["admin_login"])) {
+  // Ensure your database connection is properly established and the $con variable is defined
+  session_start();
+  $admin_username = $_POST['username'];
+  $admin_password = $_POST['password'];
+  $_SESSION['admin_username'] = $admin_username;
+
+  $select_query = "SELECT * FROM `admin_table` WHERE admin_name='$admin_username'";
+  $result = mysqli_query($con, $select_query);
+
+  if ($result && mysqli_num_rows($result) > 0) {
+    $row_data = mysqli_fetch_assoc($result);
+
+    // Changed from $row_data['$user_password'] to $row_data['user_password']
+    if ($admin_password=== $row_data['admin_password']) {
+      echo "<script>alert('Login successful')</script>";
+      echo "<script>window.open('../admin_area/admin_index.php','_self')</script>";
+
+
+    } else {
+      echo "<script>alert('Invalid Credentials: Incorrect Password')</script>";
+    }
+  } else {
+    echo "<script>alert('Invalid Credentials: User not found')</script>";
+  }
+}
+
+?>

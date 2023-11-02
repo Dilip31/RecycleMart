@@ -50,10 +50,10 @@ include("connect.php");
                 <td><?php echo $user_id?></td>
                 <td><?php echo $user_name?></td>
                 <td><?php echo $user_email?></td>
-                <td><img src="../login_registration/user_images/<?php echo $user_image?>" alt="img" class="userimg"></td>
+                <td><img src="../login_re_prince/user_images/<?php echo $user_image?>" alt="img" class="userimg"></td>
                 <td><?php echo $user_address?></td>
                 <td><a href='admin_index.php?delete_user=<?php echo $user_id ?>' class='text-light'><i class='fa-solid fa-trash'></i></a></td>
-            </tr>
+            </tr>   
          <?php } ?> 
         </tbody>
 </body>

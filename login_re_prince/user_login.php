@@ -37,7 +37,7 @@ background-color: cornflowerblue;
    
     <div class="d-flex flex-row justify-content-center">
       <h2 class="text-center mb-5">User login </h2>
-      <!-- <p class="small fw-bold mt-2 pt-1"> admin <a href="admin_login.php" class="link-danger">Login</a></p> -->
+      <p class="small fw-bold mt-2 pt-1"> admin <a href="admin_login.php" class="link-danger">Login</a></p>
     </div>
     <div class="row d-flex justify-content-sm-evenly">
       <div class="col-lg-6 col-xl-5">
@@ -87,6 +87,9 @@ if (isset($_POST["user_login"])) {
     // Changed from $row_data['$user_password'] to $row_data['user_password']
     if ($user_password=== $row_data['user_password']) {
       echo "<script>alert('Login successful')</script>";
+      echo "<script>window.open('../index.php','_self')</script>";
+
+
     } else {
       echo "<script>alert('Invalid Credentials: Incorrect Password')</script>";
     }
